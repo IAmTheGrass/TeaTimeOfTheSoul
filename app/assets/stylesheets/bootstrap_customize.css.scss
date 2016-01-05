@@ -3,4 +3,8 @@ $navbar-default-link-color: #53ff1a;
 $navbar-default-bg: #000033;
 $text-color: #53ff1a;
 
-@import "bootstrap"
+@import "bootstrap";
+
+.center {
+	text-align: center;
+}
