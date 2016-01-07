@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :pins
 
   devise_for :users
-  get 'welcome/index'
+  
 
   get 'about' => "pages#about"
   root 'pins#index'
