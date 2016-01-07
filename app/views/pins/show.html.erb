@@ -8,8 +8,8 @@
 </div>
 <div class="panel-body">
 <p>
-  <strong><%= @pin.description %></strong>
-  
+  <%= @pin.description %> <br>
+  <%= @pin.user.name if @pin.user %>
 </p>
 <% if @pin.user == current_user %>
 <%= link_to  edit_pin_path(@pin) do %>
