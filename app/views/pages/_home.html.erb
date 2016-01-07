@@ -1,14 +1,7 @@
 <div class="jumbotron center">
 <h1>Get Pinned Audio Books</h1>
 
-<% if user_signed_in? %>
-#Welcome 
-
-<% else %>
-
 <p> Click here bro to  <%= link_to "get pined", new_user_registration_path, class: "btn btn-primary" %>, </p>
 <p> Log in  <%= link_to "Here", new_user_session_path, class: "btn btn-default" %>, </p>
-
-<% end %>
 
 </div>

@@ -2,9 +2,18 @@ $body-bg: #000000;
 $navbar-default-link-color: #53ff1a;
 $navbar-default-bg: #000033;
 $text-color: #53ff1a;
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 
 @import "bootstrap";
 
 .center {
 	text-align: center;
 }
+
+.panel-body {
+background:#b30000;}
+
+.jumbotron {
+background:#660000;}
