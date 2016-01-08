@@ -1,3 +1,17 @@
 <h1> Show page </h1>
 
-<p><%= @product.id %></p>
+<table>
+ <tbody>
+<tr>
+ <th> Product Name </th>
+ <th> Product Info</th>
+ <th> Base Cost</th>
+</tr>
+
+<tr>
+	<td><%= @product.product_name %></td>
+	<td><%= @product.product_info %></td>
+	<td><%= @product.product_base_cost %></td>
+</tr>
+ </tbody>
+</table>

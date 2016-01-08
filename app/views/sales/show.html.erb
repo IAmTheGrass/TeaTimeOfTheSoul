@@ -1,3 +1,17 @@
 <h1> Show page </h1>
 
-<p><%= @sale.id %></p>
+<table>
+ <tbody>
+<tr>
+ <th> Package Name </th>
+ <th> Product ID</th>
+ <th> Cost</th>
+</tr>
+
+<tr>
+	<td><%= @sale.transaction_id %></td>
+	<td><%= @sale.customer_id %></td>
+	<td><%= @sale.package_id %></td>
+</tr>
+ </tbody>
+</table>
