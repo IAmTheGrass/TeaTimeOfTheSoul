@@ -5,3 +5,8 @@
 	<li><%= link_to package.package_id, package %></li>
 	<% end %>
 </ul>
+
+<li> <%= link_to new_package_path  do %>
+          <span class="glyphicon glyphicon-plus"></span> New Package
+            <% end %>
+         </li>

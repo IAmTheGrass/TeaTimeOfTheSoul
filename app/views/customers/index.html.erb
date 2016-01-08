@@ -5,3 +5,8 @@
 	<li><%= link_to customer.name, customer %></li>
 	<% end %>
 </ul>
+
+<li> <%= link_to new_customer_path  do %>
+          <span class="glyphicon glyphicon-plus"></span> New Customer
+            <% end %>
+         </li>

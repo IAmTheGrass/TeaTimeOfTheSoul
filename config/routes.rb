@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'about' => "pages#about"
   get 'customer' => "customers#index"
+  get 'addcustomer' => "customers/add"
   get "product" => "products#index"
   get "pacakge" => "packages#index"
   get "sale" => "sales#index"
