@@ -9,7 +9,7 @@
 
   <div class="field">
     <%= f.label :package_product_id %><br>
-    <%= f.number_field :package_product_id %>
+    <%= f.collection_select(:package_product_id, Product.all, :id, :product_name, promt: true) %>
   </div>
 
     <div class="field">
