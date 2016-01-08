@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :sales
 
   get 'about' => "pages#about"
+  get 'customer' => "customers#index"
+  get "product" => "products#index"
+  get "pacakge" => "packages#index"
+  get "sale" => "sales#index"
   root 'pins#index'
 
 
