@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-  resources :pins
-
   devise_for :users
   
+  resources :pins
+  resources :customers
+  resources :packages
+  resources :products
+  resources :sales
 
   get 'about' => "pages#about"
   root 'pins#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

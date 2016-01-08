@@ -1,0 +1,7 @@
+<h1> Welcome to new package page </h1>
+
+<ul>
+	<% @packages.each do |package| %>
+	<li><%= link_to package.package_id, package %></li>
+	<% end %>
+</ul>

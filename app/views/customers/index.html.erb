@@ -1,0 +1,7 @@
+<h1> Welcome to new customer page </h1>
+
+<ul>
+	<% @customers.each do |customer| %>
+	<li><%= link_to customer.name, customer %></li>
+	<% end %>
+</ul>

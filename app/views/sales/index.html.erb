@@ -1,0 +1,7 @@
+<h1> Welcome to new product page </h1>
+
+<ul>
+	<% @sales.each do |sale| %>
+	<li><%= link_to sale.id, sale %></li>
+	<% end %>
+</ul>
