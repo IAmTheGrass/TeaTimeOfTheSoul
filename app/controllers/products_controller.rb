@@ -8,4 +8,14 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 	end
 
+	def new
+    	@product = Product.new
+  	end
+
+  	def create
+  		@product = Product.new(params[:product].permit(:product_name, :product_info, :product_base_cost))
+  		@product.save
+  		redirect_to @product
+  	end
+
 end
