@@ -1,7 +1,7 @@
-<h1> Welcome to new product page </h1>
+<h1> Products by name </h1>
 
 <ul>
 	<% @products.each do |product| %>
-	<li><%= link_to product.id, product %></li>
+	<li><%= link_to product.product_name, product %></li>
 	<% end %>
 </ul>

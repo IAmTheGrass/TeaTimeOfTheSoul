@@ -1,7 +1,7 @@
-<h1> Welcome to new sales page </h1>
+<h1> Sales by user input transaction ID </h1>
 
 <ul>
 	<% @sales.each do |sale| %>
-	<li><%= link_to sale.id, sale %></li>
+	<li><%= link_to sale.transaction_id, sale %></li>
 	<% end %>
 </ul>
