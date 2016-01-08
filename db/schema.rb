@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107022532) do
+ActiveRecord::Schema.define(version: 20160108092158) do
+
+  create_table "customers", force: true do |t|
+    t.string   "name"
+    t.string   "company_name"
+    t.integer  "customer_id"
+    t.integer  "sales_number"
+    t.integer  "sales_total"
+    t.integer  "sales_dev"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "packages", force: true do |t|
+    t.integer  "package_id"
+    t.integer  "package_product_id"
+    t.integer  "cost"
+    t.integer  "sales_number"
+    t.integer  "sales_total"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pins", force: true do |t|
     t.string   "description"
@@ -29,6 +50,25 @@ ActiveRecord::Schema.define(version: 20160107022532) do
   end
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
+
+  create_table "products", force: true do |t|
+    t.string   "product_name"
+    t.string   "product_info"
+    t.integer  "product_base_cost"
+    t.integer  "sales_number"
+    t.integer  "sales_total"
+    t.integer  "sales_dev"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sales", force: true do |t|
+    t.integer  "transaction_id"
+    t.integer  "customer_id"
+    t.integer  "package_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
