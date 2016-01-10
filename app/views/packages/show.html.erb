@@ -31,7 +31,7 @@
 <% @touse.each do |customer| %>
 <tr>
 	<td><%= link_to @package.sales.find(customer).transaction_id, customer %></td>
-	<td><%= link_to @package.sales.find(customer).customer_id, customer_path( @package.sales.find(customer).customer_id) %></td>
+	<td><%= link_to @package.sales.find(customer).customer.name, customer_path( @package.sales.find(customer).customer_id) %></td>
 	<td><%= @package.sales.find(customer).package_id %></td>
 </tr>
 <% end %>

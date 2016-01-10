@@ -10,8 +10,8 @@
 
 <tr>
 	<td><%= @sale.transaction_id %></td>
-	<td><%= link_to @sale.customer_id, customer_path( @sale.customer_id ) %></td>
-	<td><%= link_to @sale.package_id, package_path( @sale.package_id ) %></td>
+	<td><%= link_to @sale.customer.name, customer_path( @sale.customer_id ) %></td>
+	<td><%= link_to @sale.package.package_id, package_path( @sale.package_id ) %></td>
 </tr>
  </tbody>
 </table>
