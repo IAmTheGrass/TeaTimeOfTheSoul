@@ -1,8 +1,10 @@
-<h1> Customers by name </h1>
+<h1> Customers by name (drag and drop, list elements) </h1>
 
-<ul>
+<ul id="customerIndex">
 	<% @customers.each do |customer| %>
-	<li><%= link_to customer.name, customer %></li>
+	<%= content_tag_for :li, customer do %>
+	<%= link_to customer.name, customer %></li>
+	<% end %>
 	<% end %>
 </ul>
 
