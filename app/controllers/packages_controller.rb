@@ -12,7 +12,7 @@ class PackagesController < ApplicationController
   	end
 
   	def create
-  		@package = Package.new(params[:package].permit(:package_id, :package_product_id, :cost ))
+  		@package = Package.new(params[:package].permit(:package_id, :product_id, :cost ))
   		@package.save
   		redirect_to @package
   	end

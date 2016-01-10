@@ -24,14 +24,14 @@
 <table>
  <tbody>
 <tr>
- <th> Transaction ID </th>
- <th> Customer ID </th>
- <th> Package ID</th>
+ <th> Package ID </th>
+ <th> Product ID </th>
+ <th> Package Cost</th>
 </tr>
 <% @touse.each do |packvar| %>
 <tr>
 	<td><%= link_to @product.packages.find(packvar).package_id, packvar %></td>
-	<td><%= @product.packages.find(packvar).package_product_id %></td>
+	<td><%= @product.packages.find(packvar).product_id %></td>
 	<td><%= @product.packages.find(packvar).cost %></td>
 </tr>
 <% end %>

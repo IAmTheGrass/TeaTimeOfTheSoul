@@ -10,29 +10,10 @@
 
 <tr>
 	<td><%= @package.package_id %></td>
-	<td><%= @package.package_product_id %></td>
+	<td><%= @package.product_id %></td>
 	<td><%= @package.cost %></td>
 </tr>
  </tbody>
 </table>
 
 <%= link_to "All packages", packages_path %>
-<br><br>
-<%= @num = 2 %>
-<br>
-<%= $var2 = Product.find(@num)%>
-<br>
-<%= $var2 %>
-<br>
-<%= Product.find_by_id(@package.package_product_id)%>
-<br>
-<%= Product.where( id: 2)%>
-<br>
-<%= Product.find_by_sql("Select * FROM products WHERE id = 2" )%>
-<br>
-<ul>
-	<li> stuff </li>
-	<% Product.where(:id => 2 ) do |package| %>
-	<li><%= link_to product.id, package %></li>
-	<% end %>
-</ul>
