@@ -50,8 +50,8 @@
 <% @touse2.each do |packvar| %>
 <tr>
 	<td><%= link_to @product.sales.find(packvar).transaction_id, sale_path( @product.sales.find(packvar).id ) %></td>
-	<td><%= link_to @product.sales.find(packvar).customer_id, customer_path(  @product.sales.find(packvar).customer_id ) %></td>
-	<td><%= link_to @product.sales.find(packvar).package_id, package_path( @product.sales.find(packvar).package_id ) %></td>
+	<td><%= link_to @product.customers.find( @product.sales.find(packvar).customer_id ).name , customer_path(  @product.sales.find(packvar).customer_id ) %></td>
+	<td><%= link_to @product.packages.find( @product.sales.find(packvar).package_id ).package_id , package_path( @product.sales.find(packvar).package_id ) %></td>
 </tr>
 <% end %>
  </tbody>
@@ -61,9 +61,9 @@
 <table>
  <tbody>
 <tr>
- <th> Transation ID </th>
- <th> Customer ID </th>
- <th> Package ID</th>
+ <th> Name </th>
+ <th> Company Name </th>
+ <th> Customer ID</th>
 </tr>
 <% @touse2 = @product.customers.all.uniq.pluck(:id) %>
 <% @touse2.each do |packvar| %>

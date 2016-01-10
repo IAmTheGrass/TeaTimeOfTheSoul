@@ -32,8 +32,8 @@
 <% @touse.each do |customer| %>
 <tr>
 	<td><%= link_to @customer.sales.find(customer).transaction_id, customer %></td>
-	<td><%= @customer.sales.find(customer).customer_id %></td>
-	<td><%= link_to @customer.sales.find(customer).package_id, package_path( @customer.sales.find(customer).package_id ) %></td>
+	<td><%= @customer.sales.find(customer).customer.name %></td>
+	<td><%= link_to @customer.packages.find(  @customer.sales.find(customer).package_id ).package_id , package_path( @customer.sales.find(customer).package_id ) %></td>
 </tr>
 <% end %>
  </tbody>
@@ -44,14 +44,14 @@
  <tbody>
 <tr>
  <th> Package ID </th>
- <th> Product ID </th>
+ <th> Product In Package </th>
  <th> Package Cost</th>
 </tr>
 <% @touse2 = @customer.packages.all.uniq.pluck(:id) %>
 <% @touse2.each do |customer| %>
 <tr>
 	<td><%= link_to @customer.packages.find(customer).package_id, package_path( @customer.packages.find(customer).id ) %></td>
-	<td><%= link_to @customer.packages.find(customer).product_id, product_path( @customer.packages.find(customer).id ) %></td>
+	<td><%= link_to @customer.products.find( @customer.packages.find(customer).product_id ).product_name, product_path( @customer.packages.find(customer).id ) %></td>
 	<td><%= @customer.packages.find(customer).cost %></td>
 </tr>
 <% end %>
