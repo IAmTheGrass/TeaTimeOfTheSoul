@@ -18,9 +18,9 @@
 
 <%= link_to "All Products", products_path %>
 <br><br>
-
+<p>Number of packages with this product: <%= @product.packages.count %></p>
+<p> List of pacakges with product: </p>
 <% @touse = @product.packages.all %>
-<p>List of sales: </p>
 <table>
  <tbody>
 <tr>
