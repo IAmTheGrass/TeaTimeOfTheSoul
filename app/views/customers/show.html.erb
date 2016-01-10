@@ -34,9 +34,44 @@
 	<td><%= link_to @customer.sales.find(customer).transaction_id, customer %></td>
 	<td><%= @customer.sales.find(customer).customer_id %></td>
 	<td><%= link_to @customer.sales.find(customer).package_id, package_path( @customer.sales.find(customer).package_id ) %></td>
-
-
-
+</tr>
+<% end %>
+ </tbody>
+</table>
+<br>
+<p>List of packages: </p>
+<table>
+ <tbody>
+<tr>
+ <th> Package ID </th>
+ <th> Product ID </th>
+ <th> Package Cost</th>
+</tr>
+<% @touse2 = @customer.packages.all.uniq.pluck(:id) %>
+<% @touse2.each do |customer| %>
+<tr>
+	<td><%= link_to @customer.packages.find(customer).package_id, package_path( @customer.packages.find(customer).id ) %></td>
+	<td><%= link_to @customer.packages.find(customer).product_id, product_path( @customer.packages.find(customer).id ) %></td>
+	<td><%= @customer.packages.find(customer).cost %></td>
+</tr>
+<% end %>
+ </tbody>
+</table>
+<br>
+<p>List of products: </p>
+<table>
+ <tbody>
+<tr>
+ <th> Product Name </th>
+ <th> Product Info </th>
+ <th> Product Base Cost</th>
+</tr>
+<% @touse2 = @customer.products.all.uniq.pluck(:id) %>
+<% @touse2.each do |customer| %>
+<tr>
+	<td><%= link_to @customer.products.find(customer).product_name, product_path( @customer.products.find(customer).id ) %></td>
+	<td><%= @customer.products.find(customer).product_info %></td>
+	<td><%= @customer.products.find(customer).product_base_cost %></td>
 </tr>
 <% end %>
  </tbody>

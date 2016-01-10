@@ -37,3 +37,41 @@
 <% end %>
  </tbody>
 </table>
+<br>
+<p>List of Customers who bought package: </p>
+<table>
+ <tbody>
+<tr>
+ <th> Name </th>
+ <th> Company Name </th>
+ <th> Customer ID</th>
+</tr>
+<% @touse2 = @package.customers.all.uniq.pluck(:id) %>
+<% @touse2.each do |customer| %>
+<tr>
+	<td><%= link_to @package.customers.find(customer).name, customer_path( @package.customers.find(customer).id ) %></td>
+	<td><%= @package.customers.find(customer).company_name %></td>
+	<td><%= @package.customers.find(customer).customer_id %></td>
+</tr>
+<% end %>
+ </tbody>
+</table>
+<br>
+<p> More info on prodcut in this package: </p>
+<table>
+ <tbody>
+<tr>
+ <th> Name </th>
+ <th> Info </th>
+ <th> Base Cost</th>
+</tr>
+
+<tr>
+	<td><%= @package.product.product_name %></td>
+	<td><%= @package.product.product_info %></td>
+	<td><%= @package.product.product_base_cost %></td>
+</tr>
+
+ </tbody>
+</table>
+<br>
