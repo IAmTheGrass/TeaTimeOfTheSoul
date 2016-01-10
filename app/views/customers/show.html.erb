@@ -18,3 +18,23 @@
 </table>
 
 <%= link_to "All Customers", customers_path %>
+<br><br>
+<p>Number of Sales: <%= @customer.sales.count %></p>
+<% @touse = @customer.sales.all %>
+<p>List of sales: </p>
+<table>
+ <tbody>
+<tr>
+ <th> Transaction ID </th>
+ <th> Customer ID </th>
+ <th> Package ID</th>
+</tr>
+<% @touse.each do |customer| %>
+<tr>
+	<td><%= link_to @customer.sales.find(customer).transaction_id, customer %></td>
+	<td><%= @customer.sales.find(customer).customer_id %></td>
+	<td><%= @customer.sales.find(customer).package_id %></td>
+</tr>
+<% end %>
+ </tbody>
+</table>
