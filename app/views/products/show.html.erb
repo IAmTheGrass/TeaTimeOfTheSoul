@@ -17,3 +17,23 @@
 </table>
 
 <%= link_to "All Products", products_path %>
+<br><br>
+
+<% @touse = @product.packages.all %>
+<p>List of sales: </p>
+<table>
+ <tbody>
+<tr>
+ <th> Transaction ID </th>
+ <th> Customer ID </th>
+ <th> Package ID</th>
+</tr>
+<% @touse.each do |packvar| %>
+<tr>
+	<td><%= link_to @product.packages.find(packvar).package_id, packvar %></td>
+	<td><%= @product.packages.find(packvar).package_product_id %></td>
+	<td><%= @product.packages.find(packvar).cost %></td>
+</tr>
+<% end %>
+ </tbody>
+</table>

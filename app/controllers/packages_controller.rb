@@ -5,7 +5,6 @@ class PackagesController < ApplicationController
 
 	def show
 		@package = Package.find(params[:id])
-		@products = Product.all
 	end
 
 	def new
