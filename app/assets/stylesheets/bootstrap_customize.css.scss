@@ -8,24 +8,30 @@ $text-color: #53ff1a;
 
 @import "bootstrap";
 
-.center {
+.center
+{
 	text-align: center;
 }
 
-.panel-body {
-background:#b30000;}
+.panel-body
+{
+	background:#b30000;
+}
 
-.jumbotron {
-background:#660000;}
+.jumbotron
+{
+	background:#660000;
+}
 
-input, textarea{
+input, textarea
+{
     background-color: #000000;
     color: #53ff1a;
-
 }
 
 
-table, th, td {
-padding: 15px;
+table, th, td 
+{
+	padding: 15px;
    border: 1px solid #660000;
 }

@@ -1,17 +1,17 @@
 <h1>New sale</h1>
-
+<%-# Form to add new sale -%>
 <%= form_for (@sale) do |f| %>
  
   <div class="field">
     <%= f.label :transaction_id %><br>
     <%= f.number_field :transaction_id %>
   </div> 
-
-    <div class="field">
+  <%-# allows only selection from existing customers -%>
+  <div class="field">
     <%= f.label :customer_id %><br>
     <%= f.collection_select(:customer_id, Customer.all, :id, :name, promt: true) %>
   </div> 
-
+  <%-# allows only selection from existing packages -%>
   <div class="field">
     <%= f.label :package_id %><br>
     <%= f.collection_select(:package_id, Package.all, :id, :package_id, promt: true) %>

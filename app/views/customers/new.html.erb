@@ -1,5 +1,5 @@
 <h1>New customer</h1>
-
+<%-# Form to make new customer -%>
 <%= form_for (@customer) do |f| %>
  
   <div class="field">
@@ -7,7 +7,7 @@
     <%= f.text_field :name %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :company_name %><br>
     <%= f.text_field :company_name %>
   </div>
@@ -20,4 +20,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

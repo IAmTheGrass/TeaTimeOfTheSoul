@@ -1,13 +1,12 @@
 <h1> Show page </h1>
-
+<%-# Info on selected sale -%>
 <table >
- <tbody >
+<tbody >
 <tr>
- <th> Transaction ID </th>
- <th> Customer ID</th>
- <th> Package ID</th>
+	<th> Transaction ID </th>
+	<th> Customer ID</th>
+	<th> Package ID</th>
 </tr>
-
 <tr>
 	<td><%= @sale.transaction_id %></td>
 	<td><%= link_to @sale.customer.name, customer_path( @sale.customer_id ) %></td>
@@ -15,9 +14,9 @@
 </tr>
  </tbody>
 </table>
-
+<%-# link back to index page -%>
 <%= link_to "All Sales", sales_path %>
-
+<%-# Testing section 4 now -%>
 <br><br>
 <p>Other customers who bought product: </p>
 

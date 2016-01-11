@@ -1,12 +1,13 @@
 <h1> Packages by user input package ID </h1>
-
+<%-# List of pacakages -%>
 <ul>
 	<% @packages.each do |package| %>
 	<li><%= link_to package.package_id, package %></li>
 	<% end %>
 </ul>
-
-<li> <%= link_to new_package_path  do %>
-        <span class="glyphicon glyphicon-plus"></span> New Package
-        <% end %>
+<%-# Link to add new package -%>
+<li>
+	<%= link_to new_package_path  do %>
+    <span class="glyphicon glyphicon-plus"></span> New Package
+    <% end %>
 </li>

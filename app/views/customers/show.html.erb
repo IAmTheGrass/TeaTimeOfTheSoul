@@ -1,78 +1,86 @@
-<h1> Show page </h1>
-
-
+<h1> Show page for customer</h1>
+<%-# Info on selected customer -%>
 <table>
- <tbody>
+<tbody>
 <tr>
- <th> Customer Name </th>
- <th> Company Name</th>
- <th> Customer ID</th>
+	<th> Customer Name </th>
+	<th> Company Name</th>
+	<th> Customer ID</th>
 </tr>
-
 <tr>
 	<td><%= @customer.name %></td>
 	<td><%= @customer.company_name %></td>
 	<td><%= @customer.customer_id %></td>
 </tr>
- </tbody>
+</tbody>
 </table>
-
+<%-# link back to index page -%>
 <%= link_to "All Customers", customers_path %>
 <br><br>
+<%-# shows # of sales to customer -%>
 <p>Number of Sales: <%= @customer.sales.count %></p>
+<%-# Array of sales to customer -%>
 <% @touse = @customer.sales.all %>
-<p>List of sales: </p>
+<p>List of sales made by customer: </p>
+<%-# Table showings info on sales by selected customer-%>
 <table>
- <tbody>
+<tbody>
 <tr>
- <th> Transaction ID </th>
- <th> Customer Name </th>
- <th> Package ID</th>
+	<th> Transaction ID </th>
+	<th> Customer Name </th>
+	<th> Package ID</th>
 </tr>
-<% @touse.each do |customer| %>
+<%-# interates threw sales array and uses info to populate table-%>
+<% @touse.each do |customerSale| %>
 <tr>
-	<td><%= link_to @customer.sales.find(customer).transaction_id, customer %></td>
-	<td><%= @customer.sales.find(customer).customer.name %></td>
-	<td><%= link_to @customer.packages.find(  @customer.sales.find(customer).package_id ).package_id , package_path( @customer.sales.find(customer).package_id ) %></td>
+	<td><%= link_to @customer.sales.find(customerSale).transaction_id, customerSale %></td>
+	<td><%= @customer.sales.find(customerSale).customer.name %></td>
+	<td><%= link_to @customer.packages.find(  @customer.sales.find(customerSale).package_id ).package_id , package_path( @customer.sales.find(customerSale).package_id ) %></td>
 </tr>
 <% end %>
- </tbody>
+</tbody>
 </table>
+<%-# Table displaying info for all packages bought by customer -%>
 <br>
-<p>List of packages: </p>
+<p>List of packages bought by customer: </p>
 <table>
- <tbody>
+<tbody>
 <tr>
- <th> Package ID </th>
- <th> Product In Package </th>
- <th> Package Cost</th>
+	<th> Package ID </th>
+	<th> Product In Package </th>
+	<th> Package Cost</th>
 </tr>
+<%-# Creates array of all packges bought by customer and supresses dupes -%>
 <% @touse2 = @customer.packages.all.uniq.pluck(:id) %>
-<% @touse2.each do |customer| %>
+<%-# Interates threw package array and uses info to populate table -%>
+<% @touse2.each do |customerPackage| %>
 <tr>
-	<td><%= link_to @customer.packages.find(customer).package_id, package_path( @customer.packages.find(customer).id ) %></td>
-	<td><%= link_to @customer.products.find( @customer.packages.find(customer).product_id ).product_name, product_path( @customer.packages.find(customer).id ) %></td>
-	<td><%= @customer.packages.find(customer).cost %></td>
+	<td><%= link_to @customer.packages.find(customerPackage).package_id, package_path( @customer.packages.find(customerPackage).id ) %></td>
+	<td><%= link_to @customer.products.find( @customer.packages.find(customerPackage).product_id ).product_name, product_path( @customer.packages.find(customerPackage).id ) %></td>
+	<td><%= @customer.packages.find(customerPackage).cost %></td>
 </tr>
 <% end %>
- </tbody>
+</tbody>
 </table>
+<%-# Table displaying all products bought by customer -%>
 <br>
-<p>List of products: </p>
+<p>List of products bought by customer: </p>
 <table>
- <tbody>
+<tbody>
 <tr>
- <th> Product Name </th>
- <th> Product Info </th>
- <th> Product Base Cost</th>
+	<th> Product Name </th>
+	<th> Product Info </th>
+	<th> Product Base Cost</th>
 </tr>
+<%-# Creates array of all packges bought by customer and supresses dupes -%>
 <% @touse2 = @customer.products.all.uniq.pluck(:id) %>
-<% @touse2.each do |customer| %>
+<%-# Interates threw product array and uses info to populate table -%>
+<% @touse2.each do |customerProduct| %>
 <tr>
-	<td><%= link_to @customer.products.find(customer).product_name, product_path( @customer.products.find(customer).id ) %></td>
-	<td><%= @customer.products.find(customer).product_info %></td>
-	<td><%= @customer.products.find(customer).product_base_cost %></td>
+	<td><%= link_to @customer.products.find(customerProduct).product_name, product_path( @customer.products.find(customerProduct).id ) %></td>
+	<td><%= @customer.products.find(customerProduct).product_info %></td>
+	<td><%= @customer.products.find(customerProduct).product_base_cost %></td>
 </tr>
 <% end %>
- </tbody>
+</tbody>
 </table>

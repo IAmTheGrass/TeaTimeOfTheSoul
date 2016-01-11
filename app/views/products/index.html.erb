@@ -1,12 +1,13 @@
 <h1> Products by name </h1>
-
+<%-# List of products -%>
 <ul>
 	<% @products.each do |product| %>
 	<li><%= link_to product.product_name, product %></li>
 	<% end %>
 </ul>
-
-<li> <%= link_to new_product_path  do %>
-         <span class="glyphicon glyphicon-plus"></span> New Product
-         <% end %>
+<%-# Link to add new product -%>
+<li>
+	<%= link_to new_product_path  do %>
+    <span class="glyphicon glyphicon-plus"></span> New Product
+    <% end %>
 </li>

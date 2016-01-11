@@ -1,18 +1,17 @@
 <h1>New package</h1>
-
+<%-# Form to add new package -%>
 <%= form_for (@package) do |f| %>
- 
   <div class="field">
     <%= f.label :package_id %><br>
     <%= f.number_field :package_id %>
-  </div> 
-
+  </div>
+  <%-# allows only selection from existing products -%>
   <div class="field">
     <%= f.label :product_id %><br>
     <%= f.collection_select(:product_id, Product.all, :id, :product_name, promt: true) %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :cost %><br>
     <%= f.number_field :cost %>
   </div> 

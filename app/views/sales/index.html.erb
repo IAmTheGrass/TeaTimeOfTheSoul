@@ -1,12 +1,13 @@
 <h1> Sales by user input transaction ID </h1>
-
+<%-# List of sales -%>
 <ul>
 	<% @sales.each do |sale| %>
 	<li><%= link_to sale.transaction_id, sale %></li>
 	<% end %>
 </ul>
-
-<li> <%= link_to new_sale_path  do %>
-          <span class="glyphicon glyphicon-plus"></span> New Sale
-            <% end %>
-         </li>
+<%-# Link to add new sale -%>
+<li>
+	<%= link_to new_sale_path  do %>
+    <span class="glyphicon glyphicon-plus"></span> New Sale
+    <% end %>
+</li>

@@ -1,42 +1,46 @@
 <h1> Show page </h1>
-
+<%-# Info on selected product -%>
 <table>
- <tbody>
+<tbody>
 <tr>
- <th> Product Name </th>
- <th> Product Info</th>
- <th> Base Cost</th>
+	<th> Product Name </th>
+	<th> Product Info</th>
+	<th> Base Cost</th>
 </tr>
-
 <tr>
 	<td><%= @product.product_name %></td>
 	<td><%= @product.product_info %></td>
 	<td><%= @product.product_base_cost %></td>
 </tr>
- </tbody>
+</tbody>
 </table>
-
+<%-# link back to index page -%>
 <%= link_to "All Products", products_path %>
 <br><br>
+<%-# shows # of pacakges with selected product -%>
 <p>Number of packages with this product: <%= @product.packages.count %></p>
-<p> List of pacakges with product: </p>
+<%-# Array of packages with selected product -%>
 <% @touse = @product.packages.all %>
+<%-# Table showings info on packages with selected product -%>
+<p> List of pacakges with product: </p>
 <table>
- <tbody>
+<tbody>
 <tr>
- <th> Package ID </th>
- <th> Product Name </th>
- <th> Package Cost</th>
+	<th> Package ID </th>
+	<th> Product Name </th>
+	<th> Package Cost</th>
 </tr>
-<% @touse.each do |packvar| %>
+<%-# interates threw package array and uses info to populate table-%>
+<% @touse.each do |productPackage| %>
 <tr>
-	<td><%= link_to @product.packages.find(packvar).package_id, packvar %></td>
-	<td><%= @product.packages.find(packvar).product.product_name %></td>
-	<td><%= @product.packages.find(packvar).cost %></td>
+	<td><%= link_to @product.packages.find(productPackage).package_id, productPackage %></td>
+	<td><%= @product.packages.find(productPackage).product.product_name %></td>
+	<td><%= @product.packages.find(productPackage).cost %></td>
 </tr>
 <% end %>
- </tbody>
+</tbody>
 </table>
+<%-# Table displaying info for sales that contained selected prodcut (threw any package) -%>
 <br><br>
 <p> List of sales with product: </p>
 <table>
@@ -46,16 +50,19 @@
  <th> Customer Name </th>
  <th> Package ID</th>
 </tr>
+<%-# Creates array of all sales that contained selected prodcut (threw any package) -%>
 <% @touse2 = @product.sales.all %>
-<% @touse2.each do |packvar| %>
+<%-# Interates threw package array and uses info to populate table -%>
+<% @touse2.each do |productSale| %>
 <tr>
-	<td><%= link_to @product.sales.find(packvar).transaction_id, sale_path( @product.sales.find(packvar).id ) %></td>
-	<td><%= link_to @product.customers.find( @product.sales.find(packvar).customer_id ).name , customer_path(  @product.sales.find(packvar).customer_id ) %></td>
-	<td><%= link_to @product.packages.find( @product.sales.find(packvar).package_id ).package_id , package_path( @product.sales.find(packvar).package_id ) %></td>
+	<td><%= link_to @product.sales.find(productSale).transaction_id, sale_path( @product.sales.find(productSale).id ) %></td>
+	<td><%= link_to @product.customers.find( @product.sales.find(productSale).customer_id ).name , customer_path(  @product.sales.find(productSale).customer_id ) %></td>
+	<td><%= link_to @product.packages.find( @product.sales.find(productSale).package_id ).package_id , package_path( @product.sales.find(productSale).package_id ) %></td>
 </tr>
 <% end %>
- </tbody>
+</tbody>
 </table>
+<%-# Table displaying all customers who bought this package (threw any package) -%>
 <br><br>
 <p> List of customers who bought product: </p>
 <table>
@@ -65,12 +72,14 @@
  <th> Company Name </th>
  <th> Customer ID</th>
 </tr>
+<%-# Creates array of all customers who bought by product (threw any package) and supresses dupes -%>
 <% @touse2 = @product.customers.all.uniq.pluck(:id) %>
-<% @touse2.each do |packvar| %>
+<%-# Interates threw customer array and uses info to populate table -%>
+<% @touse2.each do |productCustomer| %>
 <tr>
-	<td><%= link_to @product.customers.find(packvar).name, customer_path( @product.customers.find(packvar).id ) %></td>
-	<td><%= @product.customers.find(packvar).company_name %></td>
-	<td><%= @product.customers.find(packvar).customer_id %></td>
+	<td><%= link_to @product.customers.find(productCustomer).name, customer_path( @product.customers.find(productCustomer).id ) %></td>
+	<td><%= @product.customers.find(productCustomer).company_name %></td>
+	<td><%= @product.customers.find(productCustomer).customer_id %></td>
 </tr>
 <% end %>
  </tbody>
