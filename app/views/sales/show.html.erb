@@ -16,21 +16,54 @@
 </table>
 <%-# link back to index page -%>
 <%= link_to "All Sales", sales_path %>
-<%-# Testing section 4 now -%>
+<%-# More info on customer in selected sale -%>
 <br><br>
-<p>Other customers who bought product: </p>
-
+<p> More info on customer: </p>
 <table>
- <tbody>
+<tbody>
 <tr>
- <th> ONE </th>
- <th> TWO </th>
- <th> THREE </th>
+	<th> Customer Name </th>
+	<th> Company Name </th>
+	<th> Customer ID </th>
 </tr>
-
 <tr>
-<td><%= @sale.package.cost %></td>
-
+	<td><%= link_to @sale.customer.name, customer_path( @sale.customer_id ) %></td>
+	<td><%= @sale.customer.company_name %></td>
+	<td><%= @sale.customer.customer_id %></td>
 </tr>
- </tbody>
+</tbody>
+</table>
+<%-# More info on pacakage in selected sale -%>
+<br><br>
+<p> More info on package: </p>
+<table>
+<tbody>
+<tr>
+	<th> Package ID </th>
+	<th> Product Name </th>
+	<th> Cost </th>
+</tr>
+<tr>
+	<td><%= link_to @sale.package.package_id, package_path( @sale.package_id ) %></td>
+	<td><%= link_to @sale.package.product.product_name, product_path( @sale.package.product_id ) %></td>
+	<td><%= @sale.package.cost %></td>
+</tr>
+</tbody>
+</table>
+<%-# More info on product in pacakage in selected sale -%>
+<br><br>
+<p> More info on product in package: </p>
+<table>
+<tbody>
+<tr>
+	<th> Product Name </th>
+	<th> Product Info </th>
+	<th> Base Cost </th>
+</tr>
+<tr>
+	<td><%= link_to @sale.package.product.product_name, product_path( @sale.package.product.id ) %></td>
+	<td><%= @sale.package.product.product_info %></td>
+	<td><%= @sale.package.product.product_base_cost %></td>
+</tr>
+</tbody>
 </table>
