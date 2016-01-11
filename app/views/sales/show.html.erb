@@ -1,7 +1,7 @@
 <h1> Show page </h1>
 
-<table>
- <tbody>
+<table >
+ <tbody >
 <tr>
  <th> Transaction ID </th>
  <th> Customer ID</th>
@@ -17,3 +17,21 @@
 </table>
 
 <%= link_to "All Sales", sales_path %>
+
+<br><br>
+<p>Other customers who bought product: </p>
+
+<table>
+ <tbody>
+<tr>
+ <th> ONE </th>
+ <th> TWO </th>
+ <th> THREE </th>
+</tr>
+
+<tr>
+<td><%= @sale.package.cost %></td>
+
+</tr>
+ </tbody>
+</table>
