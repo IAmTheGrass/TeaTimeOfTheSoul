@@ -8,13 +8,15 @@ Rails.application.routes.draw do
   resources :sales
 
   get 'about' => "pages#about"
+  get 'splashnav' => "pages#splashnav"
   get 'customer' => "customers#index"
   get 'addcustomer' => "customers/add"
   get "product" => "products#index"
   get "pacakge" => "packages#index"
   get "sale" => "sales#index"
+  get "pin" => "pins#index"
   get "productshow" => "test#playpen"
-  root 'pins#index'
+  root 'pages#splashnav'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
