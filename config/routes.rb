@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "product" => "products#index"
   get "pacakge" => "packages#index"
   get "sale" => "sales#index"
-  get "productshow" => "show"
+  get "productshow" => "test#playpen"
   root 'pins#index'
 
 

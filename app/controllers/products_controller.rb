@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
 	def index
 		@products = Product.all
 	end
@@ -17,5 +16,4 @@ class ProductsController < ApplicationController
   		@product.save
   		redirect_to @product
   	end
-
 end

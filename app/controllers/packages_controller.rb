@@ -16,5 +16,4 @@ class PackagesController < ApplicationController
   		@package.save
   		redirect_to @package
   	end
-
 end

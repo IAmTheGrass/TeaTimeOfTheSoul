@@ -6,8 +6,16 @@
 	<% end %>
 </ul>
 <%-# Link to add new package -%>
-<li>
-	<%= link_to new_package_path  do %>
-    <span class="glyphicon glyphicon-plus"></span> New Package
-    <% end %>
-</li>
+<%= link_to new_package_path  do %>
+<span class="glyphicon glyphicon-plus"></span> New Package
+<% end %>
+<br><br>
+<p>Calculations (performed in ruby from relation to packages):</p>
+<%-# Calculate and display total # of packages -%>
+<p> Total # of packages: <%= @packages.each.count %> </P>
+<%-# Calculate and display total # of sales of all packages -%>
+<% @totalSalesNumber = 0 %>
+<% @packages.each do |salesVar| %>
+<% @totalSalesNumber = @totalSalesNumber + salesVar.sales.count %>
+<% end %>
+<p> Total # of sales of all packages: <%= @totalSalesNumber %> </P>

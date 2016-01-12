@@ -6,8 +6,14 @@
 	<% end %>
 </ul>
 <%-# Link to add new sale -%>
-<li>
-	<%= link_to new_sale_path  do %>
-    <span class="glyphicon glyphicon-plus"></span> New Sale
-    <% end %>
-</li>
+<%= link_to new_sale_path  do %>
+<span class="glyphicon glyphicon-plus"></span> New Sale
+<% end %>
+<br><br>
+<p>Calculations (performed in ruby from relation to sales) :</p>
+<%-# Calculate and display total # of sales -%>
+<p> Total # of sales: <%= @sales.each.count %> </P>
+<%-# Calculate and display total # of customers who have at least 1 sale -%>
+<p> Total # of customers invovled in all sales: <%= @sales.select(:customer_id).distinct.count%> </P>
+<%-# Calculate and display total # of packages who have at least 1 sale -%>
+<p> Total # of packages invovled in all sales: <%= @sales.select(:package_id).distinct.count%> </P>

@@ -8,8 +8,16 @@
 	<% end %>
 </ul>
 <%-# Link to new customer page -%>
-<li>
-	<%= link_to new_customer_path  do %>
-    <span class="glyphicon glyphicon-plus"></span> New Customer
-    <% end %>
-</li>
+<%= link_to new_customer_path  do %>
+<span class="glyphicon glyphicon-plus"></span> New Customer
+<% end %>
+<br><br>
+<p>Calculations (performed in ruby from relation to customers):</p>
+<%-# Calculate and display total # of customers -%>
+<p> Total # of customers: <%= @customers.each.count %> </P>
+<%-# Calculate and display total # of sales to all customers -%>
+<% @totalSalesNumber = 0 %>
+<% @customers.each do |salesVar| %>
+<% @totalSalesNumber = @totalSalesNumber + salesVar.sales.count %>
+<% end %>
+<p> Total # of sales to all customers: <%= @totalSalesNumber %> </P>
