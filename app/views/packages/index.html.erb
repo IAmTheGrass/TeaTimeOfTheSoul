@@ -19,3 +19,5 @@
 <% @totalSalesNumber = @totalSalesNumber + salesVar.sales.count %>
 <% end %>
 <p> Total # of sales of all packages: <%= @totalSalesNumber %> </P>
+<%-# Calculate and display total # of sales of all prodcuts in at least 1 package -%>
+<p> Total # of products in all packages: <%= @packages.select(:product_id).distinct.count %> </P>

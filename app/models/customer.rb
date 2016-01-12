@@ -7,6 +7,6 @@ class Customer < ActiveRecord::Base
 	validates :name, :presence => true,
 					 :uniqueness => true
 	validates :company_name, :presence => true
-	validates :customer_number, :presence => true,
+	validates :customer_id, :presence => true,
 								:uniqueness => true
 end
