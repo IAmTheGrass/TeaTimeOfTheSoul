@@ -53,6 +53,7 @@
 	<th> Package ID </th>
 	<th> Product In Package </th>
 	<th> Package Cost</th>
+	<th> Total # of sales of package </th>
 </tr>
 <%-# Creates array of all packges bought by customer and supresses dupes -%>
 <% @touse2 = @customer.packages.all.uniq.pluck(:id) %>
@@ -62,6 +63,7 @@
 	<td><%= link_to @customer.packages.find(customerPackage).package_id, package_path( @customer.packages.find(customerPackage).id ) %></td>
 	<td><%= link_to @customer.products.find( @customer.packages.find(customerPackage).product_id ).product_name, product_path( @customer.packages.find(customerPackage).product.id ) %></td>
 	<td><%= @customer.packages.find(customerPackage).cost %></td>
+	<td><%= @sales.with_package( customerPackage ).count %></td>
 </tr>
 <% end %>
 </tbody>
@@ -75,6 +77,7 @@
 	<th> Product Name </th>
 	<th> Product Info </th>
 	<th> Product Base Cost</th>
+	<th> Total # Of Packages With Product </th>
 </tr>
 <%-# Creates array of all packges bought by customer and supresses dupes -%>
 <% @touse2 = @customer.products.all.uniq.pluck(:id) %>
@@ -84,6 +87,7 @@
 	<td><%= link_to @customer.products.find(customerProduct).product_name, product_path( @customer.products.find(customerProduct).id ) %></td>
 	<td><%= @customer.products.find(customerProduct).product_info %></td>
 	<td><%= @customer.products.find(customerProduct).product_base_cost %></td>
+	<td><%= @packages.with_product( customerProduct ).count %></td>
 </tr>
 <% end %>
 </tbody>
@@ -103,16 +107,15 @@
 	<th> TESTING </th>
 	<th> TESTING ID</th>
 </tr>
-<%-# interates threw sales array and uses info to populate table-%>
-<% @touse.each do |customerSale| %>
+<% @touse5 = @customer.packages.all.uniq.pluck(:id) %>
+<%-# Interates threw package array and uses info to populate table -%>
+<% @touse5.each do |customerPackage| %>
 <tr>
-	<td>
-	<%=
-	@customer.sales.with_package(@customer.packages.find(@customer.sales.find(customerSale).package_id ).package_id).first
-	 %>
-	</td>
-	<td><%=@customer.packages.find(@customer.sales.find(customerSale).package_id ).package_id  %></td>
+	<td><%= @sales.with_package( customerPackage ).count %></td>
+	<td><%=  %></td>
+	<td><%=  %></td>
 </tr>
 <% end %>
 </tbody>
 </table>
+

@@ -33,6 +33,7 @@
 	<th> Package ID </th>
 	<th> Product Name </th>
 	<th> Package Cost</th>
+	<th> Total # of sales of package </th>
 </tr>
 <%-# interates threw package array and uses info to populate table-%>
 <% @touse.each do |productPackage| %>
@@ -40,6 +41,7 @@
 	<td><%= link_to @product.packages.find(productPackage).package_id, productPackage %></td>
 	<td><%= @product.packages.find(productPackage).product.product_name %></td>
 	<td><%= @product.packages.find(productPackage).cost %></td>
+	<td><%= @sales.with_package( productPackage ).count %></td>
 </tr>
 <% end %>
 </tbody>
@@ -75,6 +77,7 @@
  <th> Customer Name </th>
  <th> Company Name </th>
  <th> Customer ID</th>
+ <th> Total # Of Sales To Customer</th>
 </tr>
 <%-# Creates array of all customers who bought by product (threw any package) and supresses dupes -%>
 <% @touse2 = @product.customers.all.uniq.pluck(:id) %>
@@ -84,6 +87,7 @@
 	<td><%= link_to @product.customers.find(productCustomer).name, customer_path( @product.customers.find(productCustomer).id ) %></td>
 	<td><%= @product.customers.find(productCustomer).company_name %></td>
 	<td><%= @product.customers.find(productCustomer).customer_id %></td>
+	<td><%= @sales.with_customer( productCustomer ).count %></td>
 </tr>
 <% end %>
  </tbody>

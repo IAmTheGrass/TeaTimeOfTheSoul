@@ -9,4 +9,5 @@ class Sale < ActiveRecord::Base
 	validates :package_id, :presence => true
 
 	scope :with_package, lambda {|packageVar| where(:package_id => packageVar )}
+	scope :with_customer, lambda {|customerVar| where(:customer_id => customerVar )}
 end

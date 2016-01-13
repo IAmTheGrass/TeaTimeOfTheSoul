@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@sales = Sale.all
 	end
 
 	def new

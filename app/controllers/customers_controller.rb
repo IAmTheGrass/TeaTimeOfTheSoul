@@ -5,6 +5,8 @@ class CustomersController < ApplicationController
 
 	def show
 		@customer = Customer.find(params[:id])
+		@sales = Sale.all
+		@packages = Package.all
 	end
 
 	def new

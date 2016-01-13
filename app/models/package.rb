@@ -8,4 +8,6 @@ class Package < ActiveRecord::Base
 						   :uniqueness => true
 	validates :product_id, :presence => true
 	validates :cost, :presence => true
+
+	scope :with_product, lambda {|productVar| where(:product_id => productVar )}
 end

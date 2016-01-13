@@ -51,6 +51,7 @@
 	<th> Package Name </th>
 	<th> Company Name </th>
 	<th> Customer ID</th>
+	<th> Total # Of Sales To Customer</th>
 </tr>
 <%-# Creates array of all customers who bought this package and supresses dupes -%>
 <% @touse2 = @package.customers.all.uniq.pluck(:id) %>
@@ -60,6 +61,7 @@
 	<td><%= link_to @package.customers.find(packagesCustomer).name, customer_path( @package.customers.find(packagesCustomer).id ) %></td>
 	<td><%= @package.customers.find(packagesCustomer).company_name %></td>
 	<td><%= @package.customers.find(packagesCustomer).customer_id %></td>
+	<td><%= @sales.with_customer( packagesCustomer ).count %></td>
 </tr>
 <% end %>
 </tbody>
@@ -73,11 +75,13 @@
 	<th> Name </th>
 	<th> Info </th>
 	<th> Base Cost</th>
+	<th> Total # Of Packages With Product </th>
 </tr>
 <tr>
 	<td><%= @package.product.product_name %></td>
 	<td><%= @package.product.product_info %></td>
 	<td><%= @package.product.product_base_cost %></td>
+	<td><%= @packages.with_product( @package.product ).count %></td>
 </tr>
 </tbody>
 </table>
