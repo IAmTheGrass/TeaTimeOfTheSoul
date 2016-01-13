@@ -19,6 +19,10 @@
 <br><br>
 <%-# shows # of pacakges with selected product -%>
 <p>Number of packages with this product: <%= @product.packages.count %></p>
+<%-# shows # of sales of selected product threw all packages -%>
+<p>Number of sales with this product threw all packages: <%= @product.sales.all.count %></p>
+<%-# shows # of customers who bought selected product threw all packages -%>
+<p>Number of customers who bought this product threw all packages: <%=  @product.customers.all.uniq.pluck(:id).count %></p>
 <%-# Array of packages with selected product -%>
 <% @touse = @product.packages.all %>
 <%-# Table showings info on packages with selected product -%>

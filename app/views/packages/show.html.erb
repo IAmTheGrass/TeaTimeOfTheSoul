@@ -19,6 +19,8 @@
 <br><br>
 <%-# shows # of sales of package -%>
 <p>Number of Sales: <%= @package.sales.count %></p>
+<%-# shows # of customers who bought this package -%>
+<p>Number customers who bought this package: <%= @package.customers.all.uniq.pluck(:id).count %></p>
 <%-# creates array of sales of this package -%>
 <% @touse = @package.sales.all %>
 <%-# Table showings sales info -%>

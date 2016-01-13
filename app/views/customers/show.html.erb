@@ -18,7 +18,11 @@
 <%= link_to "All Customers", customers_path %>
 <br><br>
 <%-# shows # of sales to customer -%>
-<p>Number of Sales: <%= @customer.sales.count %></p>
+<p>Number of Sales to this customer: <%= @customer.sales.count %></p>
+<%-# shows # of packages bought by this customer -%>
+<p>Number of packages sold to this customer: <%= @customer.packages.all.uniq.pluck(:id).count %></p>
+<%-# shows # of prodcuts bought by this customer -%>
+<p>Number of products sold to this customer: <%= @customer.products.all.uniq.pluck(:id).count %></p>
 <%-# Array of sales to customer -%>
 <% @touse = @customer.sales.all %>
 <p>List of sales made by customer: </p>
@@ -80,6 +84,34 @@
 	<td><%= link_to @customer.products.find(customerProduct).product_name, product_path( @customer.products.find(customerProduct).id ) %></td>
 	<td><%= @customer.products.find(customerProduct).product_info %></td>
 	<td><%= @customer.products.find(customerProduct).product_base_cost %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+
+
+
+
+
+<p>TESTING: </p>
+<%-# Table showings info on sales by selected customer-%>
+<table>
+<tbody>
+<tr>
+	<th> TESTING </th>
+	<th> TESTING </th>
+	<th> TESTING ID</th>
+</tr>
+<%-# interates threw sales array and uses info to populate table-%>
+<% @touse.each do |customerSale| %>
+<tr>
+	<td>
+	<%=
+	@customer.sales.with_package(@customer.packages.find(@customer.sales.find(customerSale).package_id ).package_id).first
+	 %>
+	</td>
+	<td><%=@customer.packages.find(@customer.sales.find(customerSale).package_id ).package_id  %></td>
 </tr>
 <% end %>
 </tbody>

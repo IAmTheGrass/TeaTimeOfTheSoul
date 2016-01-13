@@ -7,4 +7,6 @@ class Sale < ActiveRecord::Base
 							   :uniqueness => true
 	validates :customer_id, :presence => true
 	validates :package_id, :presence => true
+
+	scope :with_package, lambda {|packageVar| where(:package_id => packageVar )}
 end
