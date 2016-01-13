@@ -1,0 +1,7 @@
+<% sales.find(@selected) do |salesvar| %>
+  <div class="sale_box">
+    <%= @selected %>
+    <%= salesvar.customer.customer_id %>
+    <%= salesvar.package_id %>
+  </div>
+<% end %>

@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get "pacakge" => "packages#index"
   get "sale" => "sales#index"
   get "pin" => "pins#index"
-  get "productshow" => "test#playpen"
   root 'pages#splashnav'
 
 

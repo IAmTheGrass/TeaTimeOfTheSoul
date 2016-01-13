@@ -56,7 +56,7 @@
 <% @touse2.each do |customerPackage| %>
 <tr>
 	<td><%= link_to @customer.packages.find(customerPackage).package_id, package_path( @customer.packages.find(customerPackage).id ) %></td>
-	<td><%= link_to @customer.products.find( @customer.packages.find(customerPackage).product_id ).product_name, product_path( @customer.packages.find(customerPackage).id ) %></td>
+	<td><%= link_to @customer.products.find( @customer.packages.find(customerPackage).product_id ).product_name, product_path( @customer.packages.find(customerPackage).product.id ) %></td>
 	<td><%= @customer.packages.find(customerPackage).cost %></td>
 </tr>
 <% end %>

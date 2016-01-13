@@ -1,0 +1,4 @@
+<% @customers.each do |myVar| %>
+<br>
+	<%= link_to @customers.find(myVar).name, fetch_sales_path(:cust_id => @customers.find(myVar).customer_id), :remote => true %>
+	<% end %>
