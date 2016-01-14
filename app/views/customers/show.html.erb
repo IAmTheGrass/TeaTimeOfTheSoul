@@ -78,6 +78,7 @@
 	<th> Product Info </th>
 	<th> Product Base Cost</th>
 	<th> Total # Of Packages With Product </th>
+	<th> Total # Of Sales With Product </th>
 </tr>
 <%-# Creates array of all packges bought by customer and supresses dupes -%>
 <% @touse2 = @customer.products.all.uniq.pluck(:id) %>
@@ -88,6 +89,13 @@
 	<td><%= @customer.products.find(customerProduct).product_info %></td>
 	<td><%= @customer.products.find(customerProduct).product_base_cost %></td>
 	<td><%= @packages.with_product( customerProduct ).count %></td>
+	<td>
+	<% @totalVar = 0 
+ 	@packages.with_product(customerProduct).each do |myVar2|
+ 	@totalVar = @totalVar + @sales.with_package(myVar2).count
+ 	end %>
+ 	<%= @totalVar %>
+	</td>
 </tr>
 <% end %>
 </tbody>
@@ -107,15 +115,53 @@
 	<th> TESTING </th>
 	<th> TESTING ID</th>
 </tr>
-<% @touse5 = @customer.packages.all.uniq.pluck(:id) %>
+<% @touse5 = @customer.products.all.uniq.pluck(:id) %>
 <%-# Interates threw package array and uses info to populate table -%>
 <% @touse5.each do |customerPackage| %>
 <tr>
 	<td><%= @sales.with_package( customerPackage ).count %></td>
 	<td><%=  %></td>
-	<td><%=  %></td>
+	<td> 
+
+<% @totalVar = 0 
+ @packages.with_product(customerPackage).each do |myVar2|
+ @totalVar = @totalVar + @sales.with_package(myVar2).count  
+ end %>
+ <%= @totalVar %>
+
+	</td>
 </tr>
 <% end %>
 </tbody>
 </table>
 
+<% @touse6 = @customer.products.all.uniq.pluck(:id) %>
+<br>
+<% @touse6.each do |myVar| %>
+<% @totalVar = 0 %>
+<br>
+<% @packages.with_product(myVar).count %>
+<br>
+<% @packages.with_product(myVar).each do |myVar2| %>
+<br>
+<% @sales.with_package(myVar2).count %>
+<% @totalVar = @totalVar + @sales.with_package(myVar2).count  %>
+<% end %>
+<%= @totalVar %>
+<% end %>
+
+<br><br>
+<% @touse7 = @customer.products.all.uniq.pluck(:id)
+
+@touse7.each do |myVar| 
+ @totalVar = 0 
+
+@packages.with_product(myVar).count 
+
+ @packages.with_product(myVar).each do |myVar2| 
+
+ @sales.with_package(myVar2).count 
+ @totalVar = @totalVar + @sales.with_package(myVar2).count  
+ end 
+ @totalVar 
+ end %>

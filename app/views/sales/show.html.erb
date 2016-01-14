@@ -64,12 +64,20 @@
 	<th> Product Info </th>
 	<th> Base Cost </th>
 	<th> Total # Of Packages With Product </th>
+	<th> Total # Of Sales With Product </th>
 </tr>
 <tr>
 	<td><%= link_to @sale.package.product.product_name, product_path( @sale.package.product.id ) %></td>
 	<td><%= @sale.package.product.product_info %></td>
 	<td><%= @sale.package.product.product_base_cost %></td>
 	<td><%= @packages.with_product(  @sale.package.product_id ).count %></td>
+	<td>
+	<% @totalVar = 0 
+ 	@packages.with_product(@sale.package.product_id).each do |myVar2|
+ 	@totalVar = @totalVar + @sales.with_package(myVar2).count
+ 	end %>
+ 	<%= @totalVar %>
+	</td>
 </tr>
 </tbody>
 </table>
