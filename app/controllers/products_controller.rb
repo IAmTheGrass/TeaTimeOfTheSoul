@@ -14,7 +14,11 @@ class ProductsController < ApplicationController
 
   	def create
   		@product = Product.new(params[:product].permit(:product_name, :product_info, :product_base_cost))
-  		@product.save
-  		redirect_to @product
+  		if @product.save
+  			redirect_to @product
+  		else
+  			render :new
+  			flash.now[:notice] = "invalid input"
+  		end
   	end
 end

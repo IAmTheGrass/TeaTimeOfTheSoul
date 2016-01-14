@@ -15,7 +15,11 @@ class PackagesController < ApplicationController
 
   	def create
   		@package = Package.new(params[:package].permit(:package_id, :product_id, :cost ))
-  		@package.save
-  		redirect_to @package
+  		if @package.save
+  			redirect_to @package
+  		else
+  			flash.now[:notice] = "invalid input"
+  			render :new
+  		end
   	end
 end

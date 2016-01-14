@@ -81,3 +81,80 @@
 </tr>
 </tbody>
 </table>
+<br><br>
+<p> All cutomers who bought this package: </p>
+<table>
+<tbody>
+<tr>
+	<th> Name </th>
+	<th> Company </th>
+	<th> Customer ID</th>
+	<th> Total # Of Sales To Customer</th>
+</tr>
+<% @test = @sales.with_package(@sale.package).uniq.pluck(:customer_id) %>
+<% @test.each do |testVar| %>
+<tr>
+	<td><%= link_to @customers.find( testVar ).name, customer_path( @customers.find( testVar ).id )  %></td>
+	<td><%=@customers.find( testVar ).company_name  %></td>
+	<td><%=@customers.find( testVar ).customer_id %></td>
+	<td><%=@sales.with_customer( @customers.find( testVar ).id ).count %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<br><br>
+<br><br>
+<p> All packages that contain the product in this package: </p>
+<table>
+<tbody>
+<tr>
+	<th> Package ID </th>
+	<th> Product Name </th>
+	<th> Cost </th>
+	<th> Total # Of Sales Of Package </th>
+</tr>
+<% @test = @sales.with_package(@sale.package) %>
+<%= @test2 =  @test.all.uniq.pluck(:id) %>
+<% @test2.each do |testVar| %>
+<tr>
+
+</tr>
+<% end %>
+</tbody>
+</table>
+<br><br>
+<p> TESTING <p>
+<br>
+
+
+<table>
+<tbody>
+<tr>
+	<th> TESTING </th>
+	<th> TESTING </th>
+	<th> TESTING ID</th>
+</tr>
+<% @test = @sales.with_package(@sale.package) %>
+<%= @test2  = @test.all.uniq.pluck(:customer_id)%>
+<% @test2.each do |testVar| %>
+<tr>
+	<td><%=@customers.find( testVar ).name  %></td>
+	<td><%=@customers.find( testVar ).company_name  %></td>
+	<td> 
+
+	<% 
+
+	%>
+
+	</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+<%=
+@sales.with_package(@sale.package).each do |var2Use|
+@sale.customer_id
+
+end
+%>

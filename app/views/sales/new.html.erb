@@ -3,7 +3,7 @@
 <%= form_for (@sale) do |f| %>
  
   <div class="field">
-    <%= f.label :transaction_id %><br>
+    <%= f.label :transaction_id, "Transaction # (5000-5999)" %><br>
     <%= f.number_field :transaction_id %>
   </div> 
   <%-# allows only selection from existing customers -%>

@@ -4,9 +4,7 @@ class Customer < ActiveRecord::Base
 	has_many :packages, through: :sales
 	has_many :products, through: :packages
 	# Validation
-	validates :name, :presence => true,
-					 :uniqueness => true
+	validates :name, :presence => true, :uniqueness => true
 	validates :company_name, :presence => true
-	validates :customer_id, :presence => true,
-								:uniqueness => true
+	validates :customer_id, :presence => true, :uniqueness => true, :numericality => true, :inclusion => 1000..1999
 end

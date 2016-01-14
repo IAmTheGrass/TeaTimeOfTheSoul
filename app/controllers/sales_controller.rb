@@ -7,6 +7,8 @@ class SalesController < ApplicationController
 		@sale = Sale.find(params[:id])
 		@sales = Sale.all
 		@packages = Package.all
+		@customers = Customer.all
+		@products = Product.all
 	end
 
 	def new
@@ -15,7 +17,12 @@ class SalesController < ApplicationController
 
   	def create
   		@sale = Sale.new(params[:sale].permit(:transaction_id, :customer_id, :package_id))
-  		@sale.save
-  		redirect_to @sale
+  		if @sale.save
+  			redirect_to @sale
+  		else
+  			render :new
+  			flash.now[:notice] = "invalid input"
+  		end
+  			
   	end
 end

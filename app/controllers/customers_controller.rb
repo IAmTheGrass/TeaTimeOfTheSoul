@@ -15,7 +15,11 @@ class CustomersController < ApplicationController
 
   	def create
   		@customer = Customer.new(params[:customer].permit(:name, :company_name, :customer_id))
-  		@customer.save
-  		redirect_to @customer
+  		if @customer.save
+  			redirect_to @customer
+  		else
+  			flash.now[:notice] = "invalid input"
+  			render :new
+  		end
   	end
 end
